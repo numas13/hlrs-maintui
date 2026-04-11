@@ -4,7 +4,7 @@ use alloc::ffi::CString;
 use compact_str::CompactString;
 use ratatui::{
     prelude::*,
-    style::{Style, Stylize},
+    style::Style,
     widgets::{Block, Borders, Cell, Row, Table},
 };
 use xash3d_ratatui::XashBackend;

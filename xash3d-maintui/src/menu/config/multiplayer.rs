@@ -14,6 +14,7 @@ use xash3d_ui::{
     color::RGBA,
     entity::EntityType,
     ffi::common::{EF_FULLBRIGHT, kRenderNormal, vec3_t},
+    math::tanf,
     misc::{Point as UiPoint, Rect as UiRect, Size as UiSize},
     picture::{Picture, PictureFlags},
     prelude::*,
@@ -454,7 +455,7 @@ impl Model {
             let viewpass = ViewPass::builder()
                 .pos(pos.x, pos.y)
                 .build(size.width as i32, size.height as i32);
-            let x = 45.0 / (viewpass.fov_y() / 2.0).to_radians().tan();
+            let x = 45.0 / tanf((viewpass.fov_y() / 2.0).to_radians());
             ent.origin.x = x;
             ent.curstate.origin.x = x;
             engine.clear_scene();

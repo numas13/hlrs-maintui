@@ -1,6 +1,7 @@
 use core::cmp;
 
 use alloc::string::String;
+use libm::trunc;
 use ratatui::{
     prelude::*,
     widgets::{Block, Borders, ListState, Paragraph, TableState, Wrap},
@@ -190,7 +191,7 @@ pub fn pretty_size(size: u64) -> String {
         d = t;
     }
     let s = size as f64 / d as f64;
-    let f = if s.fract() < 0.1 { 0 } else { 1 };
+    let f = if (s - trunc(s)) < 0.1 { 0 } else { 1 };
     format!("{s:.f$} {}", unit.unwrap_or("PiB"))
 }
 

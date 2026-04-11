@@ -18,11 +18,16 @@ rust-version = "1.86"
 log = "0.4"
 bitflags = "2.6"
 libc = "0.2"
+libm = "0.2"
 hashbrown = "0.15"
-ratatui = { version = "0.29", default-features = false, features = ["unstable-widget-ref"] }
+ratatui = { version = "0.30", default-features = false, features = ["unstable-widget-ref"] }
 csz = { git = "https://github.com/numas13/csz.git", features = ["alloc"] }
 res = { git = "https://github.com/numas13/hlrs-sdk.git", package = "xash3d-hl-resources" }
+xash3d-allocator = { git = "https://github.com/numas13/hlrs-sdk.git" }
 xash3d-ui = { git = "https://github.com/numas13/hlrs-sdk.git", features = ["libm"] }
+
+[profile.dev]
+panic = "abort"
 
 [profile.release]
 panic = "abort"

@@ -18,6 +18,7 @@ bundled = ["xash3d-ratatui/bundled"]
 [dependencies]
 bitflags.workspace = true
 libc.workspace = true
+libm.workspace = true
 log.workspace = true
 csz.workspace = true
 ratatui.workspace = true
@@ -26,6 +27,7 @@ hashbrown.workspace = true
 xash3d-protocol.git = "https://github.com/FWGS/xash3d-master.git"
 xash3d-protocol.default-features = false
 xash3d-protocol.features = ["alloc"]
+xash3d-allocator.workspace = true
 xash3d-ui.workspace = true
 xash3d-ratatui = { version = "0.1.0", path = "../xash3d-ratatui" }
 unicode-width = "0.2"

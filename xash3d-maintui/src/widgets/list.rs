@@ -222,7 +222,7 @@ impl WidgetMut<SelectResult> for List {
         }
 
         if let Some(list) = self.list.as_ref() {
-            StatefulWidgetRef::render_ref(list, self.area, buf, &mut self.state);
+            StatefulWidgetRef::render_ref(&list, self.area, buf, &mut self.state);
         }
 
         if area.height > 4 {

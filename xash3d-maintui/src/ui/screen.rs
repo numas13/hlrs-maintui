@@ -1,5 +1,6 @@
 use core::ffi::c_int;
 
+use libm::round;
 use ratatui::layout::{Position, Rect, Size};
 use xash3d_ratatui::XashBackend;
 use xash3d_ui::{color::RGBA, misc::Rect as UiRect, picture::Picture};
@@ -60,11 +61,11 @@ impl Screen {
                 let i = i as f64;
                 let pic_area = UiRect::new(
                     0,
-                    (i * r_step).round() as i32,
+                    round(i * r_step) as i32,
                     size.width,
-                    ((i + 1.0) * r_step).round() as u32,
+                    round((i + 1.0) * r_step) as u32,
                 );
-                let y = y + (i * y_step).round() as c_int;
+                let y = y + round(i * y_step) as c_int;
                 let area = UiRect::new(x, y, w, y_step as u32);
                 pic.draw(*color, area, Some(pic_area));
             }

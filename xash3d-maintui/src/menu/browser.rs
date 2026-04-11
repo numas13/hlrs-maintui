@@ -7,7 +7,7 @@ use core::{
 use compact_str::ToCompactString;
 use ratatui::{
     prelude::*,
-    style::{Color, Style, Stylize},
+    style::{Color, Style},
     widgets::{Block, Borders, Cell, Row},
 };
 use xash3d_protocol::{self as xash3d, color::Color as XashColor};
