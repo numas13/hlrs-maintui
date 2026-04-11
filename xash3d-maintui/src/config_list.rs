@@ -190,7 +190,7 @@ impl ConfigList {
         }
     }
 
-    fn draw_popup(&mut self, area: Rect, buf: &mut Buffer, screen: &Screen) {
+    pub fn draw_popup(&mut self, area: Rect, buf: &mut Buffer, screen: &Screen) {
         if let Focus::Grab(i) = self.state.focus() {
             self.items[*i].item_render(area, buf, screen);
         }
@@ -205,7 +205,6 @@ impl ConfigList {
         let inner_area = utils::main_block(self.title, area, buf);
         self.draw_list(inner_area, buf, screen);
         self.draw_scrollbar(inner_area, buf);
-        self.draw_popup(area, buf, screen);
     }
 
     pub fn key_event(&mut self, backend: &XashBackend, event: KeyEvent) -> Control {

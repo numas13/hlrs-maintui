@@ -293,7 +293,9 @@ impl Menu for SavesMenu {
         self.draw_menu(menu_area, buf, screen);
         self.draw_table(table_area, buf);
         self.draw_preview(preview_area, buf, screen);
+    }
 
+    fn draw_popup(&mut self, area: Rect, buf: &mut Buffer, screen: &Screen) {
         match self.state.focus() {
             Focus::DeletePopoup(..) => self.delete_popup.render(area, buf, screen),
             Focus::ContextMenu(..) => self.context_menu.render(area, buf, screen),

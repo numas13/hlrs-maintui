@@ -701,7 +701,9 @@ impl Menu for Browser {
         } else {
             self.draw_table(table_area, buf);
         }
+    }
 
+    fn draw_popup(&mut self, area: Rect, buf: &mut Buffer, screen: &Screen) {
         match self.state.focus() {
             Focus::SortPopup(_) => self.sort_popup.render(area, buf, screen),
             Focus::PasswordPopup(_) => self.password_popup.render(area, buf, screen),

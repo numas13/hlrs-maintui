@@ -258,6 +258,9 @@ impl Menu for Controls {
 
         self.draw_menu(menu_area, buf, screen);
         self.draw_table(table_area, buf);
+    }
+
+    fn draw_popup(&mut self, area: Rect, buf: &mut Buffer, _screen: &Screen) {
         self.draw_popup(area, buf);
     }
 

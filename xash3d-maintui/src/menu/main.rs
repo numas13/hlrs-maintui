@@ -210,14 +210,6 @@ impl MainMenu {
         }
     }
 
-    fn draw_menu(&mut self, area: Rect, buf: &mut Buffer, screen: &Screen) {
-        self.update_menu_items();
-        let len = self.menu.len();
-        let area = utils::menu_block(&self.game_title, area, buf);
-        let area = utils::render_hint(area, buf, len, self.get_menu_hint());
-        self.menu.render(area, buf, screen);
-    }
-
     fn reset(&mut self) {
         self.menu.state.select_first();
         self.state.reset();
@@ -316,8 +308,14 @@ impl Menu for MainMenu {
     }
 
     fn draw(&mut self, area: Rect, buf: &mut Buffer, screen: &Screen) {
-        self.draw_menu(area, buf, screen);
+        self.update_menu_items();
+        let len = self.menu.len();
+        let area = utils::menu_block(&self.game_title, area, buf);
+        let area = utils::render_hint(area, buf, len, self.get_menu_hint());
+        self.menu.render(area, buf, screen);
+    }
 
+    fn draw_popup(&mut self, area: Rect, buf: &mut Buffer, screen: &Screen) {
         match self.state.focus() {
             Focus::Menu => {}
             Focus::SkillSelectPopup => self.skill_popup.render(area, buf, screen),

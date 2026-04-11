@@ -640,6 +640,10 @@ impl Menu for MultiplayerConfig {
         self.model.draw(self.model_area, buf, screen);
     }
 
+    fn draw_popup(&mut self, area: Rect, buf: &mut Buffer, screen: &Screen) {
+        self.list.draw_popup(area, buf, screen);
+    }
+
     fn key_event(&mut self, backend: &XashBackend, event: KeyEvent) -> Control {
         if self.model.is_grab_input()
             || (!self.list.is_grab_input() && backend.is_cursor_in_area(self.model_area))

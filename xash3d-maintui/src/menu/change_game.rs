@@ -155,7 +155,9 @@ impl Menu for ChangeGame {
 
         self.draw_menu(menu_area, buf, screen);
         self.draw_table(table_area, buf);
+    }
 
+    fn draw_popup(&mut self, area: Rect, buf: &mut Buffer, screen: &Screen) {
         if matches!(self.state.focus(), Focus::ConfirmPopup(..)) {
             self.change_popup.render(area, buf, screen);
         }

@@ -53,6 +53,9 @@ pub trait Menu {
     fn active(&mut self) {}
     fn on_menu_hide(&mut self) {}
     fn draw(&mut self, area: Rect, buf: &mut Buffer, screen: &Screen);
+
+    fn draw_popup(&mut self, area: Rect, buf: &mut Buffer, screen: &Screen) {}
+
     fn key_event(&mut self, backend: &XashBackend, event: KeyEvent) -> Control {
         Control::None
     }
@@ -338,6 +341,8 @@ impl Ui {
                 if self.focus == Focus::QuitPopup {
                     let popup = self.quit_popup.as_mut().unwrap();
                     popup.render(area, buffer, &screen);
+                } else {
+                    menu.draw_popup(area, buffer, &screen);
                 }
             });
         }

@@ -160,6 +160,10 @@ impl Menu for NetworkConfig {
         self.list.draw_centered(area, buf, screen);
     }
 
+    fn draw_popup(&mut self, area: Rect, buf: &mut Buffer, screen: &Screen) {
+        self.list.draw_popup(area, buf, screen);
+    }
+
     fn key_event(&mut self, backend: &XashBackend, event: KeyEvent) -> Control {
         self.list.key_event(backend, event)
     }

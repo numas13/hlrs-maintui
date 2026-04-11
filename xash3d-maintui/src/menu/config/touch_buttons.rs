@@ -137,7 +137,9 @@ impl Menu for TouchButtonsConfig {
         .areas(area);
         self.menu.render(menu_area, buf, screen);
         self.list.render(list_area, buf, screen);
+    }
 
+    fn draw_popup(&mut self, area: Rect, buf: &mut Buffer, screen: &Screen) {
         match self.state.focus() {
             Focus::DeletePopoup(..) => self.remove_popup.render(area, buf, screen),
             Focus::ContextMenu(..) => self.context_menu.render(area, buf, screen),
