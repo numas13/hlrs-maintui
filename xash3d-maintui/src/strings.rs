@@ -6,7 +6,7 @@ use csz::{CStrArray, CStrThin};
 use hashbrown::HashMap;
 use xash3d_ui::{
     cell::SyncOnceCell,
-    cvar::CVarFlags,
+    cvar::CvarFlags,
     parser::{TokenError, Tokens},
 };
 
@@ -114,7 +114,7 @@ impl Strings {
 static STRINGS: SyncOnceCell<Strings> = unsafe { SyncOnceCell::new() };
 
 pub fn init() {
-    engine().register_variable(UI_LANGUAGE, DEFAULT_LANGUAGE, CVarFlags::ARCHIVE);
+    engine().register_cvar(UI_LANGUAGE, DEFAULT_LANGUAGE, CvarFlags::ARCHIVE);
 }
 
 pub fn strings() -> &'static Strings {
