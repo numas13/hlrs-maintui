@@ -24,9 +24,7 @@ csz.workspace = true
 ratatui.workspace = true
 res.workspace = true
 hashbrown.workspace = true
-xash3d-protocol.git = "https://github.com/FWGS/xash3d-master.git"
-xash3d-protocol.default-features = false
-xash3d-protocol.features = ["alloc"]
+xash3d-colored.workspace = true
 xash3d-allocator.workspace = true
 xash3d-ui.workspace = true
 xash3d-ratatui = { version = "0.1.0", path = "../xash3d-ratatui" }

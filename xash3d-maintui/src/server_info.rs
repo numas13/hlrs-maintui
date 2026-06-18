@@ -1,5 +1,5 @@
 use compact_str::{CompactString, ToCompactString};
-use xash3d_protocol::color::trim_color;
+use xash3d_colored::str::remove_colors;
 use xash3d_ui::engine::{Protocol, net::netadr_s};
 
 #[derive(Clone)]
@@ -62,17 +62,17 @@ impl ServerInfo {
             let value = it.next()?;
             match key {
                 "p" => {
-                    ret.protocol = match trim_color(value).as_ref() {
+                    ret.protocol = match remove_colors(value).as_ref() {
                         "48" => Protocol::Xash48,
                         "49" => Protocol::Xash49,
                         _ => Protocol::Current,
                     }
                 }
                 "host" => ret.host = value.trim().into(),
-                "map" => ret.map = trim_color(value).into(),
-                "gamedir" => ret.gamedir = trim_color(value).into(),
-                "numcl" => ret.numcl = trim_color(value).parse().unwrap_or_default(),
-                "maxcl" => ret.maxcl = trim_color(value).parse().unwrap_or_default(),
+                "map" => ret.map = remove_colors(value).into(),
+                "gamedir" => ret.gamedir = remove_colors(value).into(),
+                "numcl" => ret.numcl = remove_colors(value).parse().unwrap_or_default(),
+                "maxcl" => ret.maxcl = remove_colors(value).parse().unwrap_or_default(),
                 "legacy" => {
                     if value == "1" {
                         ret.protocol = Protocol::Xash48;
@@ -91,7 +91,7 @@ impl ServerInfo {
                 _ => debug!("unimplemented server info {key}={value}"),
             }
         }
-        ret.host_cmp = trim_color(&ret.host).to_lowercase().into();
+        ret.host_cmp = remove_colors(&ret.host).to_lowercase().into();
         Some(ret)
     }
 }

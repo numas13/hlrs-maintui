@@ -10,7 +10,7 @@ use ratatui::{
     style::{Color, Style},
     widgets::{Block, Borders, Cell, Row},
 };
-use xash3d_protocol::{self as xash3d, color::Color as XashColor};
+use xash3d_colored::Color as XashColor;
 use xash3d_ratatui::XashBackend;
 use xash3d_ui::engine::{Protocol, net::netadr_s};
 
@@ -843,22 +843,19 @@ impl Menu for Browser {
 
 fn colorize(s: &str) -> Line<'_> {
     let mut line = Line::default();
-    for (color, text) in xash3d::color::ColorIter::new(s) {
-        let style = XashColor::try_from(color)
-            .map(|color| {
-                let color = match color {
-                    XashColor::Black => Color::Black,
-                    XashColor::Red => Color::Red,
-                    XashColor::Green => Color::Green,
-                    XashColor::Yellow => Color::Yellow,
-                    XashColor::Blue => Color::Blue,
-                    XashColor::Cyan => Color::Cyan,
-                    XashColor::Magenta => Color::Magenta,
-                    XashColor::White => Color::White,
-                };
-                Style::new().fg(color)
-            })
-            .unwrap_or_default();
+    for (color, text) in xash3d_colored::str::split(s) {
+        let color = match color {
+            XashColor::Black => Color::Black,
+            XashColor::Red => Color::Red,
+            XashColor::Green => Color::Green,
+            XashColor::Yellow => Color::Yellow,
+            XashColor::Blue => Color::Blue,
+            XashColor::Cyan => Color::Cyan,
+            XashColor::Magenta => Color::Magenta,
+            XashColor::Default => Color::Reset,
+            _ => Color::Reset,
+        };
+        let style = Style::new().fg(color);
         line.push_span(Span::from(text).style(style))
     }
     line

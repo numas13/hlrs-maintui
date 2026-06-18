@@ -29,12 +29,6 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "683d7910e743518b0e34f1186f92494becacb047c7b6bf616c96772180fef923"
 
 [[package]]
-name = "autocfg"
-version = "1.5.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "c08606f8c3cbf4ce6ec8e28fb0014a2c086708fe954eaa885384a6165172e7e8"
-
-[[package]]
 name = "bitflags"
 version = "2.11.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -524,6 +518,12 @@ dependencies = [
 ]
 
 [[package]]
+name = "xash3d-colored"
+version = "0.1.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "9047de85ae2d1080cfd3292ff491294fd71637975d5d2e3e599f8b455357d47a"
+
+[[package]]
 name = "xash3d-ffi"
 version = "0.2.1"
 source = "git+https://github.com/numas13/xash3d-ffi.git#008709c3fe521608f8f4adcc40456161f1b9751e"
@@ -552,20 +552,10 @@ dependencies = [
  "ratatui",
  "unicode-width",
  "xash3d-allocator",
+ "xash3d-colored",
  "xash3d-hl-resources",
- "xash3d-protocol",
  "xash3d-ratatui",
  "xash3d-ui",
-]
-
-[[package]]
-name = "xash3d-protocol"
-version = "0.2.0"
-source = "git+https://github.com/FWGS/xash3d-master.git#6d7bb4596f464aeb866fc5f8e7d49088a9390970"
-dependencies = [
- "autocfg",
- "bitflags",
- "log",
 ]
 
 [[package]]
